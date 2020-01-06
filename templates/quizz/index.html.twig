@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="col-md-10">
+    <div class="container-fluid">
+        <div class="row">
+            {% for categorie in categories |slice(0,6) %}
+            <div class="col-6">
+                <a href="{{ path("question", {"id": categorie.id }) }}">
+                    <div class="card md-6">
+                        <img style="height: 200px; width: 100%; display: block;" src="{{ categorie.image }}"
+                            alt="Card image">
+                        <h3 class="card-footer">{{ categorie.name }}</h3>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

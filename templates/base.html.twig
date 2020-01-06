@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+
+		<title>
+			{% block title %}Quizz!
+			{% endblock %}
+		</title>
+		<link rel="stylesheet" href="https://bootswatch.com/4/pulse/bootstrap.min.css"> {% block stylesheets %}{% endblock %}
+
+		</head>
+
+		<body>
+			<div class="container">
+				<div class="row">
+					<a style="width: 100%" href="{{ path("home") }}">
+						<img style="width: 100%" src="https://www.espacil-habitat.fr/wp-content/uploads/2019/04/126-961x550.jpg" alt="Quizz">
+					</a>
+					<h1>Bienvenue sur le meilleur Quizz de votre vie !</h1>
+				</div>
+				<div class="row">
+					<nav class="navbar col-md-2 navbar-lg navbar-dark bg-primary">
+
+						<ul class="navbar-nav">
+							{% if not app.user %}
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('security_register') }}">
+										Inscription
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('security_login') }}">
+										Connexion
+									</a>
+								</li>
+							{% else %}
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('security_logout') }}">
+										Déconnexion
+									</a>
+								</li>
+							{% endif %}
+						</ul>
+
+						<h3>Categories</h3>
+						<form action="#">
+							<input style="width: 100%" type="search" name="q" placeholder="Search">
+							<input type="submit" value="Go">
+						</form>
+						<div class="navbar-collapse collapse show" id="navbarColor01" style="">
+							{{ render(controller('App\\Controller\\QuizzController::categorie')) }}
+						</div>
+					</nav>
+					{% block body %}{% endblock %}
+				</div>
+			</div>
+
+			{% block javascripts %}{% endblock %}
+		</body>
+	</html>
+</body></html>

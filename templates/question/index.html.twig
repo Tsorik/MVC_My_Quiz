@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ categorie.name }} {% endblock %}
+
+{% block body %}
+
+<div class="col-md-10">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <img style="width: 100%" src="{{ categorie.image }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                
+                    <div class="row">
+                        <div class="col-12">
+                        {{ categorie.questions[0].question }}
+                        </div>
+                    </div>
+                   {{ form(reponseform) }}
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

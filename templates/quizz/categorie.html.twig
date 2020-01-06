@@ -1,0 +1,7 @@
+<ul class="navbar-nav mr-auto">
+	{% for categorie in categories %}
+		<li class="nav-item">
+			<a class="nav-link" href="{{ path("question", {"id": categorie.id }) }}">{{ categorie.name }}</a>
+		</li>
+	{% endfor %}
+</ul>
